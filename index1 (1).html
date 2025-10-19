@@ -1,0 +1,315 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry, Angry Bird</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #ffcccc, #ff9999);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #ff5e62, #ff9966);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .angry-bird {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: #ff4444;
+            border-radius: 50%;
+            top: 20px;
+            right: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .angry-bird::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            top: 20px;
+            left: 15px;
+        }
+        
+        .angry-bird::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #333;
+            border-radius: 50%;
+            top: 25px;
+            left: 20px;
+        }
+        
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .message {
+            background-color: #fff9f9;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #ff5e62;
+        }
+        
+        .message h2 {
+            color: #ff5e62;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .message p {
+            line-height: 1.6;
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .promise {
+            background-color: #f0f8ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #4a90e2;
+        }
+        
+        .promise h2 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .promise ul {
+            text-align: left;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        .promise li {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .hearts {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .heart {
+            width: 40px;
+            height: 40px;
+            background-color: #ff5e62;
+            position: relative;
+            transform: rotate(45deg);
+            animation: heartbeat 1.2s infinite;
+        }
+        
+        .heart::before, .heart::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background-color: #ff5e62;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .heart::before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .heart::after {
+            top: 0;
+            left: -20px;
+        }
+        
+        .heart:nth-child(2) {
+            animation-delay: 0.4s;
+            background-color: #ff9966;
+        }
+        
+        .heart:nth-child(3) {
+            animation-delay: 0.8s;
+            background-color: #ff5e62;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: rotate(45deg) scale(1); }
+            25% { transform: rotate(45deg) scale(1.1); }
+            50% { transform: rotate(45deg) scale(1); }
+            75% { transform: rotate(45deg) scale(1.1); }
+            100% { transform: rotate(45deg) scale(1); }
+        }
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .signature {
+            font-style: italic;
+            color: #ff9999;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .message, .promise {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>I'm So Sorry, My Angry Bird</h1>
+            <p>This website is dedicated to you and my promise to be better</p>
+            <div class="angry-bird"></div>
+        </div>
+        
+        <div class="content">
+            <div class="message">
+                <h2>My Heartfelt Apology</h2>
+                <p>My dearest Angry Bird,</p>
+                <p>I know I messed up and made you angry, and for that I am truly sorry. Seeing you upset breaks my heart more than you can imagine.</p>
+                <p>You mean the world to me, and I never want to be the reason for your sadness. I promise to learn from my mistakes and do better.</p>
+                <p>Please forgive me. Your happiness is everything to me.</p>
+            </div>
+            
+            <div class="hearts">
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+            </div>
+            
+            <div class="promise">
+                <h2>My Promise to You</h2>
+                <p>I want you to know that I will always be here for you, no matter what.</p>
+                <ul>
+                    <li>I will listen more and talk less</li>
+                    <li>I will be more thoughtful of your feelings</li>
+                    <li>I will work to be the person you deserve</li>
+                    <li>I will always cherish and respect you</li>
+                    <li>I will be by your side forever</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>With all my love and the promise of forever,</p>
+            <p class="signature">Your forever partner</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            
+            // Add click effect
+            container.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+            
+            // Add floating hearts occasionally
+            setInterval(createFloatingHeart, 3000);
+            
+            function createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.position = 'fixed';
+                heart.style.top = '100%';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animation = 'floating 6s linear forwards';
+                heart.style.opacity = '0.7';
+                heart.style.zIndex = '-1';
+                
+                document.body.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+            
+            // Add the floating animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floating {
+                    0% { transform: rotate(45deg) translateY(0) rotate(0); opacity: 0.7; }
+                    100% { transform: rotate(45deg) translateY(-100vh) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
